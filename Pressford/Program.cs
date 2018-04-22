@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Pressford.Data;
 
 namespace Pressford
 {
@@ -14,7 +16,16 @@ namespace Pressford
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var host = BuildWebHost(args);
+
+            // Seed Database on Startup :
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                DbSeed.Initialize(services).Wait();
+            }
+
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
