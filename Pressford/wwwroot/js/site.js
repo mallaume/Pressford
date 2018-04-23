@@ -18,6 +18,11 @@ angular.module('pressfordApp', ['ngRoute'])
                     controller: 'ArticleController',
                     controllerAs: 'vm'
                 })
+                .when('/new', {
+                    templateUrl: '/Home/NewArticle',
+                    controller: 'NewArticleController',
+                    controllerAs: 'vm'
+                })
                 .otherwise('/articles');
         }
     ])
@@ -37,7 +42,7 @@ angular.module('pressfordApp', ['ngRoute'])
             });
         };
     })
-    .controller('ArticleController', function ($routeParams, $http)
+    .controller('ArticleController', function ($routeParams, $location, $http)
     {
         var vm = this;
 
@@ -47,6 +52,7 @@ angular.module('pressfordApp', ['ngRoute'])
 
         vm.getArticle = getArticle;
         vm.saveArticle = saveArticle;
+        vm.deleteArticle = deleteArticle;
         vm.like = like;
         vm.writeComment = writeComment;
         vm.toggleEdit = toggleEdit;
@@ -59,6 +65,7 @@ angular.module('pressfordApp', ['ngRoute'])
             });
         }
         function saveArticle() {
+
             var data = {
                 body: vm.article.body
             };
@@ -68,12 +75,18 @@ angular.module('pressfordApp', ['ngRoute'])
                 getArticle();
             });
         }
+        function deleteArticle() {
+            $http.delete('/api/articles/' + $routeParams.id).then(function (e) {
+                $location.path('/articles');
+            });
+        }
         function like() {
             $http.post('/api/articles/' + $routeParams.id + '/like').then(function (e) {
                 getArticle();
             });
         }
         function writeComment() {
+
             var data = {
                 text: vm.comment
             };
@@ -85,5 +98,25 @@ angular.module('pressfordApp', ['ngRoute'])
         }
         function toggleEdit() {
             vm.edit = !vm.edit;
+        }
+    })
+    .controller('NewArticleController', function ($location, $http) {
+        var vm = this;
+
+        vm.title = null;
+        vm.body = null;
+
+        vm.saveArticle = saveArticle;
+
+        function saveArticle() {
+
+            var data = {
+                title: vm.title,
+                body: vm.body
+            };
+
+            $http.post('/api/articles/', data).then(function (e) {
+                $location.path('/articles');
+            });
         }
     });

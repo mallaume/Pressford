@@ -76,12 +76,17 @@ namespace Pressford.Controllers
         [Authorize(Roles = "Publisher")]
         public async Task<IActionResult> CreateArticle([FromBody] Article article)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var user = await _userManager.GetUserAsync(User);
 
-            _context.Articles.Add(article);
+            var item = new Article()
+            {
+                Author = user,
+                Title = article.Title,
+                Body = article.Body,
+                CreationDate = DateTime.UtcNow
+            };
+
+            _context.Articles.Add(item);
 
             await _context.SaveChangesAsync();
 
@@ -104,6 +109,7 @@ namespace Pressford.Controllers
             }
 
             _context.Articles.Remove(article);
+
             await _context.SaveChangesAsync();
 
             return Ok(article);

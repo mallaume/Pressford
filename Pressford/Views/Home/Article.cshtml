@@ -18,7 +18,8 @@
             @if (User.Identity.IsAuthenticated && User.IsInRole("Publisher"))
             {
                 <button class="btn btn-warning btn-xs pull-right" ng-click="vm.toggleEdit()">Edit Article</button>
-                <button class="btn btn-danger btn-xs pull-right" ng-click="vm.saveArticle()" ng-if="vm.edit">Save Article</button>
+                <button class="btn btn-primary btn-xs pull-right" ng-click="vm.saveArticle()" ng-if="vm.edit">Save Article</button>
+                <button class="btn btn-danger btn-xs pull-right" ng-click="vm.deleteArticle()" ng-if="vm.edit">Delete Article</button>
             }
 
             <p class="article-likes"><img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" class="icon16" /> This article has been liked {{vm.article.likes.length}} times...</p>

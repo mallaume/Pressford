@@ -102,7 +102,7 @@ namespace Pressford.Data.Migrations
                 column: "CommenterId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.NoAction);
+                onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ArticleLike_Article_ArticleId",
@@ -110,7 +110,7 @@ namespace Pressford.Data.Migrations
                 column: "ArticleId",
                 principalTable: "Article",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ArticleLike_AspNetUsers_LikerId",

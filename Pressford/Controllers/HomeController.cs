@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Pressford.Data;
@@ -16,14 +17,20 @@ namespace Pressford.Controllers
         {
             return View();
         }
-        public IActionResult Article()
-        {
-            return View();
-        }
         public IActionResult Articles()
         {
             return View();
         }
+        public IActionResult Article()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Publisher")]
+        public IActionResult NewArticle()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

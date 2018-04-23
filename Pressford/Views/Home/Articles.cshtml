@@ -8,6 +8,12 @@
     <div class="jumbotron" style="background-color: lightskyblue">
         <h2>Pressford Consulting last articles</h2>
         <h4>You can find the last articles below...</h4>
+        <br />
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Publisher"))
+        {
+            <a class="btn btn-danger" href="#/new/">Write an Article</a>
+        }
+
     </div>
 </div>
 
