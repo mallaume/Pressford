@@ -45,6 +45,7 @@ namespace Pressford.Controllers
                 .Include(e => e.Author)
                 .Include(e => e.Likes)
                 .Include(e => e.Comments)
+                .ThenInclude(c => c.Commenter)
                 .SingleOrDefaultAsync(m => m.Id == id);
 
             if (article == null)
@@ -58,35 +59,18 @@ namespace Pressford.Controllers
         [Authorize(Roles = "Publisher")]
         public async Task<IActionResult> UpdateArticle([FromRoute] int id, [FromBody] Article article)
         {
-            if (!ModelState.IsValid)
+            var item = await _context.Articles.SingleOrDefaultAsync(e => e.Id == id);
+
+            if (item == null)
             {
-                return BadRequest(ModelState);
+                return NotFound();
             }
 
-            if (id != article.Id)
-            {
-                return BadRequest();
-            }
+            item.Body = article.Body;
 
-            _context.Entry(article).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ArticleExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok();
         }
         [HttpPost]
         [Authorize(Roles = "Publisher")]
@@ -156,7 +140,7 @@ namespace Pressford.Controllers
         }
         [HttpPost("{id}/comment")]
         [Authorize]
-        public async Task<IActionResult> PostComment([FromRoute] int id, [FromBody] string comment)
+        public async Task<IActionResult> PostComment([FromRoute] int id, [FromBody] ArticleComment comment)
         {
             if (!ArticleExists(id))
             {
@@ -172,7 +156,7 @@ namespace Pressford.Controllers
             article.Comments.Add(new ArticleComment()
             {
                 Commenter = user,
-                Text = comment,
+                Text = comment.Text,
                 TimeStamp = DateTime.UtcNow
             });
 

@@ -1,5 +1,4 @@
-﻿import { fail } from "assert";
-
+﻿
 // Write your JavaScript code.
 angular.module('pressfordApp', ['ngRoute'])
     .config(['$locationProvider', '$routeProvider',
@@ -10,7 +9,7 @@ angular.module('pressfordApp', ['ngRoute'])
 
             $routeProvider
                 .when('/articles', {
-                    templateUrl: '/html/index.html',
+                    templateUrl: '/Home/Articles',
                     controller: 'ArticlesController',
                     controllerAs: 'vm'
                 })
@@ -18,9 +17,6 @@ angular.module('pressfordApp', ['ngRoute'])
                     templateUrl: '/Home/Article',
                     controller: 'ArticleController',
                     controllerAs: 'vm'
-                })
-                .when('/test', {
-                    template: '<h2>Hello</h2>'
                 })
                 .otherwise('/articles');
         }
@@ -46,10 +42,14 @@ angular.module('pressfordApp', ['ngRoute'])
         var vm = this;
 
         vm.article = null;
+        vm.comment = null;
+        vm.edit = false;
 
         vm.getArticle = getArticle;
-        vm.isAlreadyLiked = isAlreadyLiked;
+        vm.saveArticle = saveArticle;
         vm.like = like;
+        vm.writeComment = writeComment;
+        vm.toggleEdit = toggleEdit;
 
         getArticle();
 
@@ -57,20 +57,33 @@ angular.module('pressfordApp', ['ngRoute'])
             $http.get('/api/articles/' + $routeParams.id).then(function (e) {
                 vm.article = e.data;
             });
-        };
-        function isAlreadyLiked() {
-            if (vm.article && vm.article.likes && vm.article.likes.length > 0) {
-                for (var i = 0; i < vm.article.likes.length; i++) {
-                    if (vm.article.likes[i].liker)
-                }
-            }
-            else {
-                return false;
-            }
+        }
+        function saveArticle() {
+            var data = {
+                body: vm.article.body
+            };
+
+            $http.put('/api/articles/' + $routeParams.id, data).then(function (e) {
+                vm.edit = false;
+                getArticle();
+            });
         }
         function like() {
             $http.post('/api/articles/' + $routeParams.id + '/like').then(function (e) {
                 getArticle();
             });
+        }
+        function writeComment() {
+            var data = {
+                text: vm.comment
+            };
+
+            $http.post('/api/articles/' + $routeParams.id + '/comment/', data).then(function (e) {
+                vm.comment = null;
+                getArticle();
+            });
+        }
+        function toggleEdit() {
+            vm.edit = !vm.edit;
         }
     });

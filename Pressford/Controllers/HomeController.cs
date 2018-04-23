@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Pressford.Data;
 using Pressford.Models;
 
 namespace Pressford.Controllers
@@ -15,6 +17,10 @@ namespace Pressford.Controllers
             return View();
         }
         public IActionResult Article()
+        {
+            return View();
+        }
+        public IActionResult Articles()
         {
             return View();
         }
