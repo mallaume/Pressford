@@ -33,3 +33,20 @@
         display: none;
     }
 }
+
+.page-background {
+    background-color: #e9ebee;
+}
+
+.article-card {
+    text-align: justify;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: white;
+}
+
+.icon16 {
+    width: 16px;
+    height: 16px;
+}

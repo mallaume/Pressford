@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="col-md-9">
+
+        <div class="row">
+
+            <h3>{{vm.article.title}}</h3>
+
+            <p style="color: dodgerblue"><i>Published by {{vm.article.author.fullName}} - {{vm.article.creationDate | date}}</i></p>
+
+            <p class="article-card">{{vm.article.body}}</p>
+
+            <p class="article-likes"><img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" class="icon16" /> This article has been liked {{vm.article.likes.length}} times...</p>
+
+            <p class="article-comments"><img src="https://freeiconshop.com/wp-content/uploads/edd/chat-flat.png" class="icon16" /> This article has {{vm.article.comments.length}} comments...</p>
+
+        </div>
+
+    </div>
+    <div class="col-md-3">
+        <a href="#/test">Test</a>
+    </div>
+</div>

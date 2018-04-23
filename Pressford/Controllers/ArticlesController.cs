@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pressford.Data;
@@ -16,10 +17,12 @@ namespace Pressford.Controllers
     public class ArticlesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ArticlesController(ApplicationDbContext context)
+        public ArticlesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -120,6 +123,62 @@ namespace Pressford.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(article);
+        }
+
+        [HttpPost("{id}/like")]
+        [Authorize]
+        public async Task<IActionResult> LikeArticle([FromRoute] int id)
+        {
+            if (!ArticleExists(id))
+            {
+                return BadRequest();
+            }
+
+            var article = await _context.Articles
+                .Include(e => e.Likes)
+                .ThenInclude(l => l.Liker)
+                .SingleOrDefaultAsync(e => e.Id == id);
+
+            if (!article.Likes.Where(e => e.Liker.UserName == User.Identity.Name).Any())
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                article.Likes.Add(new ArticleLike()
+                {
+                    Liker = user,
+                    TimeStamp = DateTime.UtcNow
+                });
+
+                await _context.SaveChangesAsync();
+            }
+
+            return Ok();
+        }
+        [HttpPost("{id}/comment")]
+        [Authorize]
+        public async Task<IActionResult> PostComment([FromRoute] int id, [FromBody] string comment)
+        {
+            if (!ArticleExists(id))
+            {
+                return BadRequest();
+            }
+
+            var article = await _context.Articles
+                .Include(e => e.Comments)
+                .SingleOrDefaultAsync(e => e.Id == id);
+
+            var user = await _userManager.GetUserAsync(User);
+
+            article.Comments.Add(new ArticleComment()
+            {
+                Commenter = user,
+                Text = comment,
+                TimeStamp = DateTime.UtcNow
+            });
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
 
         private bool ArticleExists(int id)
