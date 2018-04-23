@@ -43,7 +43,7 @@ namespace Pressford.Data
             {
                 var user = new ApplicationUser()
                 {
-                    UserName = "spressford",
+                    UserName = email1,
                     Email = email1,
                     FirstName = "Scott",
                     LastName = "Pressford",
@@ -65,7 +65,7 @@ namespace Pressford.Data
             {
                 var user = new ApplicationUser()
                 {
-                    UserName = "aturing",
+                    UserName = email2,
                     Email = email2,
                     FirstName = "Alan",
                     LastName = "Turing",
