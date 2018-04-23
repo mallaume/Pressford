@@ -5,15 +5,23 @@
 <br />
 
 <div class="row">
-    <div class="jumbotron" style="background-color: lightskyblue">
-        <h2>Pressford Consulting last articles</h2>
-        <h4>You can find the last articles below...</h4>
+    <div class="jumbotron jumbotron-slim" style="background-color: lightskyblue">
+        <h2>Pressford Consulting latest articles</h2>
+        <h4>You can find the latest articles below...</h4>
         <br />
         @if (User.Identity.IsAuthenticated && User.IsInRole("Publisher"))
         {
             <a class="btn btn-danger" href="#/new/">Write an Article</a>
         }
 
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 style="text-align: center">Most liked Articles</h3>
+        <nvd3 class="remove-x-lines" style="height: 300px" options="vm.chartOptions" data="vm.chartData">
+        </nvd3>
     </div>
 </div>
 
@@ -26,7 +34,9 @@
 
             <p style="color: dodgerblue"><i>Published by {{article.author.fullName}} - {{article.creationDate | date}}</i></p>
 
-            <p class="article-card">{{article.body.substring(0, 255)}} <a href="#/article/{{article.id}}" class="btn btn-primary btn-xs">Read more...</a></p>
+            <div class="article-card" ta-bind="text" ng-model="article.body" ta-readonly="true"></div>
+
+            <a href="#/article/{{article.id}}" class="btn btn-primary btn-xs pull-right">Read more...</a>
 
             <p class="article-likes"><img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" class="icon16" /> This article has been liked {{article.likes.length}} times...</p>
 

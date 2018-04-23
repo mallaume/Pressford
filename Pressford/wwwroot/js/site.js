@@ -1,6 +1,6 @@
 ﻿
 // Write your JavaScript code.
-angular.module('pressfordApp', ['ngRoute'])
+angular.module('pressfordApp', ['ngRoute', 'nvd3', 'textAngular'])
     .config(['$locationProvider', '$routeProvider',
         function config($locationProvider, $routeProvider)
         {
@@ -31,16 +31,50 @@ angular.module('pressfordApp', ['ngRoute'])
         var vm = this;
 
         vm.articles = [];
+        vm.chartData = [
+            {
+                key: "Likes",
+                values: []
+            }
+        ];
+        vm.chartOptions = {
+            chart: {
+                type: 'discreteBarChart',
+                color: ['#f44336', '#9c27b0', '#03a9f4', '#e91e63', '#ffc107'],
+                height: 300,
+                margin: {
+                    top: 20,
+                    right: 20,
+                    bottom: 60,
+                    left: 55
+                },
+                x: function (d) { return d.label; },
+                y: function (d) { return d.value; },
+                showValues: true,
+                valueFormat: function (d) { return d3.format(',.0f')(d); },
+                transitionDuration: 500,
+                xAxis: {
+                    rotateLabels: -15
+                }
+            }
+        };
 
         vm.getArticles = getArticles;
+        vm.getChartData = getChartData;
 
         getArticles();
+        getChartData();
 
         function getArticles() {
             $http.get('/api/articles').then(function (e) {
                 vm.articles = e.data;
             });
         };
+        function getChartData() {
+            $http.get('/api/articles/stats').then(function (e) {
+                vm.chartData[0].values = e.data;
+            });
+        }
     })
     .controller('ArticleController', function ($routeParams, $location, $http)
     {
@@ -76,9 +110,13 @@ angular.module('pressfordApp', ['ngRoute'])
             });
         }
         function deleteArticle() {
-            $http.delete('/api/articles/' + $routeParams.id).then(function (e) {
-                $location.path('/articles');
-            });
+            var result = confirm("Want to delete?");
+
+            if (result) {
+                $http.delete('/api/articles/' + $routeParams.id).then(function (e) {
+                    $location.path('/articles');
+                });
+            }
         }
         function like() {
             $http.post('/api/articles/' + $routeParams.id + '/like').then(function (e) {

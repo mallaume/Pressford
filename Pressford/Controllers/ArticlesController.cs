@@ -13,7 +13,7 @@ using Pressford.Models;
 namespace Pressford.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Articles")]
+    [Route("api/articles")]
     public class ArticlesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -27,15 +27,33 @@ namespace Pressford.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> GetLastArticles()
+        public async Task<IActionResult> GetArticles()
         {
             var articles = await _context.Articles
                 .Include(e => e.Author)
                 .Include(e => e.Likes)
                 .Include(e => e.Comments)
-                .OrderByDescending(e => e.CreationDate).Take(10).ToListAsync();
+                .OrderByDescending(e => e.CreationDate).ToListAsync();
 
             return Ok(articles);
+        }
+        [HttpGet("stats")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetArticlesStats()
+        {
+            var articles = await _context.Articles
+                .Include(e => e.Likes)
+                .ToListAsync();
+
+            var sorted = from e in articles
+                         orderby e.Likes.Count descending
+                         select new
+                         {
+                             label = e.Title,
+                             value = e.Likes.Count
+                         };
+
+            return Ok(sorted.Take(10));
         }
         [HttpGet("{id}")]
         [AllowAnonymous]
@@ -96,18 +114,18 @@ namespace Pressford.Controllers
         [Authorize(Roles = "Publisher")]
         public async Task<IActionResult> DeleteArticle([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var article = await _context.Articles.SingleOrDefaultAsync(m => m.Id == id);
+            var article = await _context.Articles
+                .Include(e => e.Comments)
+                .Include(e => e.Likes)
+                .SingleOrDefaultAsync(m => m.Id == id);
 
             if (article == null)
             {
                 return NotFound();
             }
 
+            _context.ArticleLikes.RemoveRange(article.Likes);
+            _context.ArticleComments.RemoveRange(article.Comments);
             _context.Articles.Remove(article);
 
             await _context.SaveChangesAsync();
