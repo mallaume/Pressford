@@ -64,9 +64,9 @@ namespace Pressford.Properties {
         ///   Looks up a localized string similar to &lt;div id=&quot;content_0_articlePanel&quot; class=&quot;articleContent&quot;&gt;&lt;p&gt;Education is one of the most challenging areas our foundation works on. There will never be a medicine that guarantees every child has access to a world-class education or a vaccine to prevent kids from dropping out. Each district has unique needs, and a good idea that works in one school might be difficult to scale across the entire system.  &lt;/p&gt;
         ///&lt;p&gt;Melinda and I have &lt;a&gt;&lt;/a&gt;&lt;a href=&quot;/Education/Council-of-Great-City-Schools&quot; target=&quot;_blank&quot; onclic [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Article1 {
+        internal static string ArticleHtml1 {
             get {
-                return ResourceManager.GetString("Article1", resourceCulture);
+                return ResourceManager.GetString("ArticleHtml1", resourceCulture);
             }
         }
         
@@ -74,9 +74,9 @@ namespace Pressford.Properties {
         ///   Looks up a localized string similar to &lt;div id=&quot;content_0_articlePanel&quot; class=&quot;articleContent&quot;&gt;&lt;p&gt;Reading is my favorite way to indulge my curiosity. Although I’m lucky that I get to meet with a lot of interesting people and visit fascinating places through my work, I still think books are the best way to explore new topics that interest you. &lt;/p&gt;
         ///&lt;p&gt;This year I picked up books on a bunch of diverse subjects. I really enjoyed &lt;em&gt;Black Flags: The Rise of ISIS&lt;/em&gt; by Joby Warrick. I recommend it to anyone who wants a compelling history lesson o [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Article2 {
+        internal static string ArticleHtml2 {
             get {
-                return ResourceManager.GetString("Article2", resourceCulture);
+                return ResourceManager.GetString("ArticleHtml2", resourceCulture);
             }
         }
         
@@ -84,9 +84,9 @@ namespace Pressford.Properties {
         ///   Looks up a localized string similar to &lt;div id=&quot;content_0_articlePanel&quot; class=&quot;articleContent&quot;&gt;&lt;p&gt;Last year, &lt;a&gt;&lt;/a&gt;&lt;a href=&quot;/Health/Leaving-No-One-Behind&quot; target=&quot;_blank&quot; onclick=&quot;s_objectID=&amp;quot;https://www.gatesnotes.com/Health/Leaving-No-One-Behind_1&amp;quot;;return this.s_oc?this.s_oc(e):true&quot;&gt;at an event in New York&lt;/a&gt;, I learned about an impressive woman whose story I want to share with you. Her name is Cacilda Fumo, she lives in Mozambique, and every year she helps save hundreds of lives—by reminding them they are not alone. &lt;/p&gt;
         ///&lt;p&gt;Moza [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Article3 {
+        internal static string ArticleHtml3 {
             get {
-                return ResourceManager.GetString("Article3", resourceCulture);
+                return ResourceManager.GetString("ArticleHtml3", resourceCulture);
             }
         }
     }

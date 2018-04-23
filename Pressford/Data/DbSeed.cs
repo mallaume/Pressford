@@ -96,7 +96,7 @@ namespace Pressford.Data
                     CreationDate = new DateTime(2018, 03, 13)
                 };
 
-                article.Body = Pressford.Properties.Resources.Article1;
+                article.Body = Pressford.Properties.Resources.ArticleHtml1;
 
                 await context.Articles.AddAsync(article);
                 await context.SaveChangesAsync();
@@ -134,7 +134,7 @@ namespace Pressford.Data
                     CreationDate = new DateTime(2017, 12, 04)
                 };
 
-                article.Body = Pressford.Properties.Resources.Article2;
+                article.Body = Pressford.Properties.Resources.ArticleHtml2;
 
                 await context.Articles.AddAsync(article);
                 await context.SaveChangesAsync();
@@ -172,7 +172,7 @@ namespace Pressford.Data
                     CreationDate = new DateTime(2018, 04, 18)
                 };
 
-                article.Body = Pressford.Properties.Resources.Article3;
+                article.Body = Pressford.Properties.Resources.ArticleHtml3;
 
                 await context.Articles.AddAsync(article);
                 await context.SaveChangesAsync();
