@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -43,7 +44,7 @@ namespace Pressford.Data
             {
                 var user = new ApplicationUser()
                 {
-                    UserName = "spressford",
+                    UserName = email1,
                     Email = email1,
                     FirstName = "Scott",
                     LastName = "Pressford",
@@ -65,7 +66,7 @@ namespace Pressford.Data
             {
                 var user = new ApplicationUser()
                 {
-                    UserName = "aturing",
+                    UserName = email2,
                     Email = email2,
                     FirstName = "Alan",
                     LastName = "Turing",
@@ -86,42 +87,120 @@ namespace Pressford.Data
                 return;
             }
 
-            var article = new Article()
+            // Article 1
             {
-                Title = "Introducing ASP.NET 5",
-                Author = await userManager.FindByEmailAsync(email1),
-                CreationDate = new DateTime(2015, 02, 23)
-            };
+                var article = new Article()
+                {
+                    Title = "A humanist approach to teaching kids",
+                    Author = await userManager.FindByEmailAsync(email1),
+                    CreationDate = new DateTime(2018, 03, 13)
+                };
 
-            article.Body = "<p>The first preview release of ASP.NET 1.0 came out almost 15 years ago.  Since then millions of developers have used it to build and run great web applications, and over the years we have added and evolved many, many capabilities to it.</p>";
-            article.Body += "<p>I'm excited today to post about a new release of ASP.NET that we are working on that we are calling ASP.NET 5.  This new release is one of the most significant architectural updates we've done to ASP.NET.  As part of this release we are making ASP.NET leaner, more modular, cross-platform, and cloud optimized.  The ASP.NET 5 preview is now available as a preview release, and you can start using it today by downloading the latest CTP of Visual Studio 2015 which we just made available.</p>";
-            article.Body += "<p>ASP.NET 5 is an open source web framework for building modern web applications that can be developed and run on Windows, Linux and the Mac. It includes the MVC 6 framework, which now combines the features of MVC and Web API into a single web programming framework.  ASP.NET 5 will also be the basis for SignalR 3 - enabling you to add real time functionality to cloud connected applications. ASP.NET 5 is built on the .NET Core runtime, but it can also be run on the full .NET Framework for maximum compatibility.</p>";
+                article.Body = Pressford.Properties.Resources.ArticleHtml1;
 
-            await context.Articles.AddAsync(article);
-            await context.SaveChangesAsync();
+                await context.Articles.AddAsync(article);
+                await context.SaveChangesAsync();
 
-            var alanTuring = await userManager.FindByEmailAsync("alan.turing@gmail.com");
+                var alanTuring = await userManager.FindByEmailAsync("alan.turing@gmail.com");
 
-            var comment = new ArticleComment()
+                var comment = new ArticleComment()
+                {
+                    Article = article,
+                    Commenter = alanTuring,
+                    Text = "Great article !! Thanks for sharing !",
+                    TimeStamp = DateTime.Now
+                };
+
+                await context.ArticleComments.AddAsync(comment);
+                await context.SaveChangesAsync();
+
+                var like = new ArticleLike()
+                {
+                    Article = article,
+                    Liker = alanTuring,
+                    TimeStamp = DateTime.UtcNow
+                };
+
+                await context.ArticleLikes.AddAsync(like);
+                await context.SaveChangesAsync();
+            }
+
+            // Article 2
             {
-                Article = article,
-                Commenter = alanTuring,
-                Text = "Great article !! Thanks for sharing !",
-                TimeStamp = DateTime.Now
-            };
+                var article = new Article()
+                {
+                    Title = "5 amazing books I read this year",
+                    Author = await userManager.FindByEmailAsync(email1),
+                    CreationDate = new DateTime(2017, 12, 04)
+                };
 
-            await context.ArticleComments.AddAsync(comment);
-            await context.SaveChangesAsync();
+                article.Body = Pressford.Properties.Resources.ArticleHtml2;
 
-            var like = new ArticleLike()
+                await context.Articles.AddAsync(article);
+                await context.SaveChangesAsync();
+
+                var alanTuring = await userManager.FindByEmailAsync("alan.turing@gmail.com");
+
+                var comment = new ArticleComment()
+                {
+                    Article = article,
+                    Commenter = alanTuring,
+                    Text = "Great article again !! Thanks for sharing !",
+                    TimeStamp = DateTime.Now
+                };
+
+                await context.ArticleComments.AddAsync(comment);
+                await context.SaveChangesAsync();
+
+                var like = new ArticleLike()
+                {
+                    Article = article,
+                    Liker = alanTuring,
+                    TimeStamp = DateTime.UtcNow
+                };
+
+                await context.ArticleLikes.AddAsync(like);
+                await context.SaveChangesAsync();
+            }
+
+            // Article 3
             {
-                Article = article,
-                Liker = alanTuring,
-                TimeStamp = DateTime.UtcNow
-            };
+                var article = new Article()
+                {
+                    Title = "Strength in Numbers",
+                    Author = await userManager.FindByEmailAsync(email1),
+                    CreationDate = new DateTime(2018, 04, 18)
+                };
 
-            await context.ArticleLikes.AddAsync(like);
-            await context.SaveChangesAsync();
+                article.Body = Pressford.Properties.Resources.ArticleHtml3;
+
+                await context.Articles.AddAsync(article);
+                await context.SaveChangesAsync();
+
+                var alanTuring = await userManager.FindByEmailAsync("alan.turing@gmail.com");
+
+                var comment = new ArticleComment()
+                {
+                    Article = article,
+                    Commenter = alanTuring,
+                    Text = "Wonderful !! Thanks for sharing !",
+                    TimeStamp = DateTime.Now
+                };
+
+                await context.ArticleComments.AddAsync(comment);
+                await context.SaveChangesAsync();
+
+                var like = new ArticleLike()
+                {
+                    Article = article,
+                    Liker = alanTuring,
+                    TimeStamp = DateTime.UtcNow
+                };
+
+                await context.ArticleLikes.AddAsync(like);
+                await context.SaveChangesAsync();
+            }
+
         }
     }
 }

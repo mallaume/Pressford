@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="row">
+
+            <br />
+
+            <h3>Write a new Article :</h3>
+
+            <br />
+
+            <label for="title">Title :</label>
+            <input type="text" class="form-control" id="title" name="title" ng-model="vm.title"/>
+
+            <br/>
+
+            <label for="body">Body :</label>
+            <textarea ng-model="vm.body" class="form-control" id="body" name="body" style="width: 100%; height: 400px"></textarea>
+
+            <button class="btn btn-danger btn-xs pull-right" ng-click="vm.saveArticle()">Save Article</button>
+
+        </div>
+
+    </div>
+</div>

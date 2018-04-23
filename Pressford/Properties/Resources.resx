@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ArticleHtml1" xml:space="preserve">
+    <value>&lt;div id="content_0_articlePanel" class="articleContent"&gt;&lt;p&gt;Education is one of the most challenging areas our foundation works on. There will never be a medicine that guarantees every child has access to a world-class education or a vaccine to prevent kids from dropping out. Each district has unique needs, and a good idea that works in one school might be difficult to scale across the entire system.  &lt;/p&gt;
+&lt;p&gt;Melinda and I have &lt;a&gt;&lt;/a&gt;&lt;a href="/Education/Council-of-Great-City-Schools" target="_blank" onclick="s_objectID=&amp;quot;https://www.gatesnotes.com/Education/Council-of-Great-City-Schools_1&amp;quot;;return this.s_oc?this.s_oc(e):true"&gt;evolved our thinking&lt;/a&gt; about education over the years, but one thing we remain committed to is innovation. I try to meet regularly with teachers and administrators in the field who have creative ideas about how to make school systems work for every child.  &lt;/p&gt;
+&lt;p&gt;I recently had an insightful conversation with one of these big thinkers: Jorge Aguilar, the superintendent of the Sacramento City United School District. Although this is only his first year running his school district in Northern California, he’s already making a real difference in the lives of his students. &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;div class="gnYoutubeHolder videoEmbed" id="gnYoutubeHolder0"&gt;&lt;iframe width="800" height="450" frameborder="0" src="https://www.youtube.com/embed/mYCzL0WLMNc?rel=0&amp;amp;enablejsapi=1&amp;amp;origin=https://www.gatesnotes.com" id="whateverID0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Jorge’s approach as an educator is shaped by his personal story. His parents were migrant farm workers from Mexico, and he split his childhood between a small town in California and his family’s hometown. When his senior year of high school came around, his parents didn’t know enough about the U.S. system to help him apply to college. He didn’t even know how community colleges differed from universities until a representative from the University of California visited his school.&lt;/p&gt;&lt;p&gt;Today, Jorge uses data to make sure kids like him don’t slip through the cracks. Twenty percent of the students in the Sacramento school district are still learning the English language, and approximately 70 percent are classified as low-income—two groups that are particularly at risk for falling behind academically. Jorge helped develop an early-warning system that looks at attendance, behavior, and academic records to detect kids who are more likely to drop out. His district also uses national college acceptance data to create recommendations for seniors about where they should apply.&lt;/p&gt;&lt;p&gt;“Data can keep you very human as long as you remind yourself that every numerator, every denominator is the face of a child,” he told me. “There’s just so many ways in which we can use data for this idea of making our work more human and taking a humanist approach.”&lt;/p&gt;&lt;p&gt;Jorge is also a big believer in what he calls an “opt-out philosophy” (it has nothing to do with opting out of tests). If a student excels at a particular subject, she gets automatically enrolled in college prep and other classes such as Advanced Placement. If she’s falling behind, the school signs her up for additional winter or summer classes. In both cases, parents must sign a form saying they don’t want their child to participate if they want to opt out.&lt;/p&gt;&lt;p&gt;He first implemented this approach in his previous job with the Fresno Unified school system. Jorge knew from the data that more Fresno students could benefit from extra instruction than were currently enrolled in summer school. Before the program, the entire district would see only four or five students sign up every year. After switching to an opt-out system, an impressive 18,000 students attended summer classes. He is now implementing a similar program in Sacramento.  &lt;/p&gt;&lt;p&gt;I hope that eventually no child will need remedial instruction to succeed in the classroom. Until that day comes, I’m glad more students are getting the help they need. It’s too early to tell if Jorge’s approach is working in Sacramento, but I’m excited that he’s willing to try something new. I can’t wait to see the results. &lt;/p&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="ArticleHtml2" xml:space="preserve">
+    <value>&lt;div id="content_0_articlePanel" class="articleContent"&gt;&lt;p&gt;Reading is my favorite way to indulge my curiosity. Although I’m lucky that I get to meet with a lot of interesting people and visit fascinating places through my work, I still think books are the best way to explore new topics that interest you. &lt;/p&gt;
+&lt;p&gt;This year I picked up books on a bunch of diverse subjects. I really enjoyed &lt;em&gt;Black Flags: The Rise of ISIS&lt;/em&gt; by Joby Warrick. I recommend it to anyone who wants a compelling history lesson on how ISIS managed to seize power in Iraq. &lt;/p&gt;
+&lt;p&gt;On the other end of the spectrum, I loved John Green’s new novel, &lt;em&gt;Turtles All the Way Down&lt;/em&gt;, which tells the story of a young woman who tracks down a missing billionaire. It deals with serious themes like mental illness, but John’s stories are always entertaining and full of great literary references. &lt;/p&gt;
+&lt;p&gt;Another good book I read recently is &lt;em&gt;The Color of Law&lt;/em&gt; by Richard Rothstein. I’ve been trying to learn more about the forces preventing economic mobility in the U.S., and it helped me understand the role federal policies have played in creating racial segregation in American cities.&lt;/p&gt;
+&lt;p&gt;I’ve written longer reviews about some of the best books I read this year. They include a memoir by one of my favorite comedians, a heartbreaking tale of poverty in America, a deep dive into the history of energy, and not one but two stories about the Vietnam War. If you’re looking to curl up by the fireplace with a great read this holiday season, you can’t go wrong with one of these.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;div class="gnYoutubeHolder videoEmbed" id="gnYoutubeHolder0"&gt;&lt;iframe width="800" height="450" frameborder="0" src="https://www.youtube.com/embed/69pwVFbJIaY?rel=0&amp;amp;enablejsapi=1&amp;amp;origin=https://www.gatesnotes.com" id="whateverID0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a&gt;&lt;/a&gt;&lt;a href="/Books/The-Best-We-Could-Do" target="_blank" onclick="s_objectID=&amp;quot;https://www.gatesnotes.com/Books/The-Best-We-Could-Do_1&amp;quot;;return this.s_oc?this.s_oc(e):true"&gt;The Best We Could Do&lt;/a&gt;, &lt;/em&gt;by Thi Bui. This gorgeous graphic novel is a deeply personal memoir that explores what it means to be a parent and a refugee. The author’s family fled Vietnam in 1978. After giving birth to her own child, she decides to learn more about her parents’ experiences growing up in a country torn apart by foreign occupiers.  &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a&gt;&lt;/a&gt;&lt;a href="/Books/Evicted" target="_blank" onclick="s_objectID=&amp;quot;https://www.gatesnotes.com/Books/Evicted_2&amp;quot;;return this.s_oc?this.s_oc(e):true"&gt;Evicted: Poverty and Profit in the American City&lt;/a&gt;,&lt;/em&gt; by Matthew Desmond. If you want a good understanding of how the issues that cause poverty are intertwined, you should read this book about the eviction crisis in Milwaukee. Desmond has written a brilliant portrait of Americans living in poverty. He gave me a better sense of what it is like to be poor in this country than anything else I have read.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a&gt;&lt;/a&gt;&lt;a href="/Books/Believe-Me" target="_blank" onclick="s_objectID=&amp;quot;https://www.gatesnotes.com/Books/Believe-Me_1&amp;quot;;return this.s_oc?this.s_oc(e):true"&gt;Believe Me: A Memoir of Love, Death, and Jazz Chickens&lt;/a&gt;,&lt;/em&gt; by Eddie Izzard. Izzard’s personal story is fascinating: he survived a difficult childhood and worked relentlessly to overcome his lack of natural talent and become an international star. If you’re a huge fan of him like I am, you’ll love this book. His written voice is very similar to his stage voice, and I found myself laughing out loud several times while reading it. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a&gt;&lt;/a&gt;&lt;a href="/Books/The-Sympathizer" target="_blank" onclick="s_objectID=&amp;quot;https://www.gatesnotes.com/Books/The-Sympathizer_1&amp;quot;;return this.s_oc?this.s_oc(e):true"&gt;The Sympathizer&lt;/a&gt;, &lt;/em&gt;by Viet Thanh Nguyen. Most of the books I’ve read and movies I’ve seen about the Vietnam War focused on the American perspective. Nguyen’s award-winning novel offers much-needed insight into what it was like to be Vietnamese and caught between both sides. Despite how dark it is, &lt;i&gt;The Sympathizer&lt;/i&gt; is a gripping story about a double agent and the trouble he gets himself into. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a&gt;&lt;/a&gt;&lt;a href="/Books/Energy-and-Civilization" target="_blank" onclick="s_objectID=&amp;quot;https://www.gatesnotes.com/Books/Energy-and-Civilization_1&amp;quot;;return this.s_oc?this.s_oc(e):true"&gt;Energy and Civilization: A History&lt;/a&gt;,&lt;/em&gt; by Vaclav Smil. Smil is one of my favorite authors, and this is his masterpiece. He lays out how our need for energy has shaped human history—from the era of donkey-powered mills to today’s quest for renewable energy. It’s not the easiest book to read, but at the end you’ll feel smarter and better informed about how energy innovation alters the course of civilizations. &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="ArticleHtml3" xml:space="preserve">
+    <value>&lt;div id="content_0_articlePanel" class="articleContent"&gt;&lt;p&gt;Last year, &lt;a&gt;&lt;/a&gt;&lt;a href="/Health/Leaving-No-One-Behind" target="_blank" onclick="s_objectID=&amp;quot;https://www.gatesnotes.com/Health/Leaving-No-One-Behind_1&amp;quot;;return this.s_oc?this.s_oc(e):true"&gt;at an event in New York&lt;/a&gt;, I learned about an impressive woman whose story I want to share with you. Her name is Cacilda Fumo, she lives in Mozambique, and every year she helps save hundreds of lives—by reminding them they are not alone. &lt;/p&gt;
+&lt;p&gt;Mozambique has one of the highest HIV infection rates in the world. More than 1.6 million people—10 percent of the adult population—are living with HIV. &lt;/p&gt;
+&lt;p&gt;Cacilda was diagnosed with HIV in 2002. “When I first learned about it, I thought I would die,” she recalls. “I used to wake up early morning and check if I am alive or not.”&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;div class="gnYoutubeHolder videoEmbed" id="gnYoutubeHolder0"&gt;&lt;iframe width="800" height="450" frameborder="0" src="https://www.youtube.com/embed/9izkn5bL2WA?rel=0&amp;amp;enablejsapi=1&amp;amp;origin=https://www.gatesnotes.com" id="whateverID0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;But then she started meeting other people living with HIV, and as their numbers grew so did her strength and her belief she would live. Cacilda was one of the first in Maputo to be open about her status. She started wearing a t-shirt emblazoned with a logo that reads: “HIV POSITIVE.”&lt;/p&gt;
+&lt;p&gt;At times, people rejected her because of her status. Many more in her community, however, admired her for her courage, helping her create an even larger circle of friends and supporters. They met every week, praying together, cooking together, and sharing their stories. Eventually, the group had about one hundred people, many of them receiving life-saving anti-retroviral treatment. Cacilda emerged as their leader.&lt;/p&gt;
+&lt;p&gt;About the same time, Mozambique’s Ministry of Health was struggling to improve the delivery of anti-retroviral treatment. While the program was successful in putting thousands of patients on treatment for the first time, medical staff were overburdened with caseloads. People on HIV treatment often walked miles to reach their clinic and waited in long lines to get care. Every year, about 30 percent of HIV patients dropped off their life-saving treatment.&lt;/p&gt;
+&lt;p&gt;Working with Doctors Without Borders, the government of Mozambique decided to try a new approach to simplify care to help keep more people on treatment. They started organizing small peer support groups for people on HIV treatment. The idea was simple. Make treatment easier by putting more control into the hands of the patients. A representative from each patient group could pick up all the drugs for the group each month, saving the rest of the group the hassle of going to the clinic. Members of the groups, known as Community antiretroviral therapy (ART) Groups or CAGs, would also support one another to ensure they were all staying on their treatment. &lt;/p&gt;
+&lt;p&gt;When the program reached Maputo, Cacilda was ready to join. She helped organize dozens of support groups from her network. Then she went one step further. She kept track of the groups, checking whether members were attending their meetings and taking their treatment. If someone fell off treatment, she took upon herself to locate them and find out what was wrong. &lt;/p&gt;
+&lt;p&gt;“We help people feel strong knowing they are not alone,” she says. &lt;/p&gt;&lt;p&gt;Some patients who stop treatment are addicted to alcohol and forget to take their treatment, she says. Some don’t understand how the treatment works and the stop taking their medication as soon as they feel better. Others get busy with their jobs and drift away. &lt;/p&gt;
+&lt;p&gt;Whatever the reason, Cacilda warns them of the dangers of stopping treatment and encourages them to restart. Her efforts to bring back residents of Maputo to treatment has become nearly full-time work. Most days residents of Maputo see Cacilda traveling on foot—which is remarkable because due to a childhood injury she uses crutches—through the dirty alleyways and crowded markets in search of people who have stopped treatment. She doesn’t give up until she finds them. &lt;/p&gt;
+&lt;p&gt;Cacilda’s persistence pays off—in lives saved. Cacilda estimates that she tracks down about 500 people every year and encourages them to resume their treatment. &lt;/p&gt;&lt;p&gt;That’s a remarkable achievement—one that proves how much difference one life can make in the world.&amp;nbsp;&lt;/p&gt;   
+		&lt;/div&gt;</value>
+  </data>
+</root>

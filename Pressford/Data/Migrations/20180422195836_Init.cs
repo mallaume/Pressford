@@ -62,7 +62,7 @@ namespace Pressford.Data.Migrations
                         column: x => x.ArticleId,
                         principalTable: "Article",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ArticleComment_AspNetUsers_CommenterId",
                         column: x => x.CommenterId,

@@ -33,3 +33,28 @@
         display: none;
     }
 }
+
+.page-background {
+    background-color: #f5f6f9;
+}
+
+.article-card {
+    text-align: justify;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: white;
+    margin-bottom: 8px;
+    max-height: 160px;
+    overflow: hidden;
+}
+
+.icon16 {
+    width: 16px;
+    height: 16px;
+}
+
+.jumbotron-slim {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}

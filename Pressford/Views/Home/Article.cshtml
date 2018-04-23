@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="row">
+
+            <h3>{{vm.article.title}}</h3>
+
+            <p style="color: dodgerblue"><i>Published by {{vm.article.author.fullName}} - {{vm.article.creationDate | date}}</i></p>
+
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Publisher"))
+            {
+                <button class="btn btn-warning btn-xs pull-right" ng-click="vm.toggleEdit()">Edit Article</button>
+                <button class="btn btn-primary btn-xs pull-right" ng-click="vm.saveArticle()" ng-if="vm.edit">Save Article</button>
+                <button class="btn btn-danger btn-xs pull-right" ng-click="vm.deleteArticle()" ng-if="!vm.edit">Delete Article</button>
+            }
+
+            <div ta-bind="text" ng-model="vm.article.body" ta-readonly="!vm.edit" ng-if="!vm.edit"></div>
+            <div text-angular="text-angular" name="body" ng-model="vm.article.body" ta-disabled="!vm.edit" ng-if="vm.edit"></div>
+
+            <p class="article-likes"><img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" class="icon16" /> This article has been liked {{vm.article.likes.length}} times...</p>
+
+            <p class="article-comments"><img src="https://freeiconshop.com/wp-content/uploads/edd/chat-flat.png" class="icon16" /> This article has {{vm.article.comments.length}} comments...</p>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <button class="btn btn-primary btn-xs" ng-click="vm.like()" ng-if="vm.article.likes">Like !</button>
+            }
+
+            <hr />
+
+            <div class="row" ng-repeat="comment in vm.article.comments">
+                <div class="col-lg-12">
+                    <p class="article-card">
+                        {{comment.text}}
+                        <br />
+                    </p>
+                    <p style="color: dodgerblue; font-size: 10px" class="pull-right"><i>{{comment.commenter.fullName}} - {{comment.timeStamp | date}}</i></p>
+                </div>
+            </div>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <hr />
+
+                <div class="input-group">
+                    <input type="text" class="form-control" id="comment" placeholder="Comment" required="" ng-model="vm.comment">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" ng-click="vm.writeComment()">Comment</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>
