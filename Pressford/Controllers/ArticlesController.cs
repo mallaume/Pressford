@@ -59,6 +59,11 @@ namespace Pressford.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetArticle([FromRoute] int id)
         {
+            if (!ArticleExists(id))
+            {
+                return NotFound();
+            }
+
             var article = await _context.Articles
                 .Include(e => e.Author)
                 .Include(e => e.Likes)
@@ -66,23 +71,18 @@ namespace Pressford.Controllers
                 .ThenInclude(c => c.Commenter)
                 .SingleOrDefaultAsync(m => m.Id == id);
 
-            if (article == null)
-            {
-                return NotFound();
-            }
-
             return Ok(article);
         }
         [HttpPut("{id}")]
         [Authorize(Roles = "Publisher")]
         public async Task<IActionResult> UpdateArticle([FromRoute] int id, [FromBody] Article article)
         {
-            var item = await _context.Articles.SingleOrDefaultAsync(e => e.Id == id);
-
-            if (item == null)
+            if (!ArticleExists(id))
             {
                 return NotFound();
             }
+
+            var item = await _context.Articles.SingleOrDefaultAsync(e => e.Id == id);
 
             item.Body = article.Body;
 
@@ -114,15 +114,15 @@ namespace Pressford.Controllers
         [Authorize(Roles = "Publisher")]
         public async Task<IActionResult> DeleteArticle([FromRoute] int id)
         {
+            if (!ArticleExists(id))
+            {
+                return NotFound();
+            }
+
             var article = await _context.Articles
                 .Include(e => e.Comments)
                 .Include(e => e.Likes)
                 .SingleOrDefaultAsync(m => m.Id == id);
-
-            if (article == null)
-            {
-                return NotFound();
-            }
 
             _context.ArticleLikes.RemoveRange(article.Likes);
             _context.ArticleComments.RemoveRange(article.Comments);
@@ -132,14 +132,13 @@ namespace Pressford.Controllers
 
             return Ok(article);
         }
-
         [HttpPost("{id}/like")]
         [Authorize]
         public async Task<IActionResult> LikeArticle([FromRoute] int id)
         {
             if (!ArticleExists(id))
             {
-                return BadRequest();
+                return NotFound();
             }
 
             var user = await _userManager.GetUserAsync(User);
@@ -171,7 +170,7 @@ namespace Pressford.Controllers
                 }
                 else
                 {
-                    return Unauthorized();
+                    return BadRequest();
                 }
             }
             else
@@ -185,7 +184,7 @@ namespace Pressford.Controllers
         {
             if (!ArticleExists(id))
             {
-                return BadRequest();
+                return NotFound();
             }
 
             var article = await _context.Articles

@@ -26,6 +26,19 @@ angular.module('pressfordApp', ['ngRoute', 'nvd3', 'textAngular'])
                 .otherwise('/articles');
         }
     ])
+    .directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if (event.which === 13) {
+                    scope.$apply(function () {
+                        scope.$eval(attrs.ngEnter, { 'event': event });
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    })
     .controller('ArticlesController', function ($http)
     {
         var vm = this;
@@ -121,9 +134,21 @@ angular.module('pressfordApp', ['ngRoute', 'nvd3', 'textAngular'])
         function like() {
             $http.post('/api/articles/' + $routeParams.id + '/like').then(function (e) {
                 getArticle();
+            }).catch(function (error) {
+                if (error.status == 401) {
+                    alert('You have reached your quota of articles to like...');
+                }
+                else if (error.status == 400) {
+                    alert('You have already liked this article...');
+                }
             });
         }
         function writeComment() {
+
+            if (vm.comment == '')
+            {
+                return;
+            }
 
             var data = {
                 text: vm.comment
