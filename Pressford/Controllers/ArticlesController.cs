@@ -142,25 +142,42 @@ namespace Pressford.Controllers
                 return BadRequest();
             }
 
-            var article = await _context.Articles
-                .Include(e => e.Likes)
-                .ThenInclude(l => l.Liker)
-                .SingleOrDefaultAsync(e => e.Id == id);
+            var user = await _userManager.GetUserAsync(User);
 
-            if (!article.Likes.Where(e => e.Liker.UserName == User.Identity.Name).Any())
+            // Has user used all his likes quota ?
+            var userLikesCount = await _context.ArticleLikes
+                .Include(e => e.Liker)
+                .Where(e => e.Liker.UserName == user.UserName)
+                .CountAsync();
+
+            if (userLikesCount < user.MaxLikesCount)
             {
-                var user = await _userManager.GetUserAsync(User);
+                var article = await _context.Articles
+                    .Include(e => e.Likes)
+                    .ThenInclude(l => l.Liker)
+                    .SingleOrDefaultAsync(e => e.Id == id);
 
-                article.Likes.Add(new ArticleLike()
+                if (!article.Likes.Where(e => e.Liker.UserName == User.Identity.Name).Any())
                 {
-                    Liker = user,
-                    TimeStamp = DateTime.UtcNow
-                });
+                    article.Likes.Add(new ArticleLike()
+                    {
+                        Liker = user,
+                        TimeStamp = DateTime.UtcNow
+                    });
 
-                await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
+
+                    return Ok();
+                }
+                else
+                {
+                    return Unauthorized();
+                }
             }
-
-            return Ok();
+            else
+            {
+                return Unauthorized();
+            }
         }
         [HttpPost("{id}/comment")]
         [Authorize]

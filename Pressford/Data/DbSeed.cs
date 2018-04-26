@@ -48,6 +48,7 @@ namespace Pressford.Data
                     Email = email1,
                     FirstName = "Scott",
                     LastName = "Pressford",
+                    MaxLikesCount = 3,
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
 
@@ -70,6 +71,7 @@ namespace Pressford.Data
                     Email = email2,
                     FirstName = "Alan",
                     LastName = "Turing",
+                    MaxLikesCount = 3,
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
 

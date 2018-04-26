@@ -17,5 +17,7 @@ namespace Pressford.Models
         [StringLength(50)]
         public string LastName { get; set; }
         public string FullName => $"{this.FirstName} {this.LastName}";
+        [Required]
+        public int MaxLikesCount { get; set; }
     }
 }
